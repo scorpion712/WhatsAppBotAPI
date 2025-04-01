@@ -1,0 +1,31 @@
+{
+  "name": "whatsapp-api",
+  "type": "module",
+  "description": "Estudio Contable Paula Scerbo WhatsApp API",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "license": "MIT",
+  "author": "Lautaro Diez",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ./src/app.js",
+    "deploy": "firebase deploy --only functions"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.1",
+    "firebase-functions": "^6.3.2",
+    "puppeteer": "^23.11.1",
+    "qrcode": "^1.5.4",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.26.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "engines": {
+    "node": "22"
+  }
+}
