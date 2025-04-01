@@ -1,7 +1,8 @@
+import { Request, Response, NextFunction } from 'express';
+const qrcode = require('qrcode-terminal');
 
-import { generateQRCode, sendMessage, isClientReady } from '../services/whatsAppService.js';
-import wpw from 'whatsapp-web.js';
-const { MessageMedia } = wpw;
+import { generateQRCode, sendMessage, isClientReady } from '../services/whatsAppService';
+import { MessageMedia } from 'whatsapp-web.js';
 
 export const validateUser = async (req, res, next) => {
   try {
@@ -13,7 +14,7 @@ export const validateUser = async (req, res, next) => {
   }
 };
 
-export const sendMessageHandler = async (req, res, next)=> {  
+export const sendMessageHandler = async (req, res, next) => { 
   const { number, message, pdf } = req.body; 
 
   try {
@@ -21,7 +22,7 @@ export const sendMessageHandler = async (req, res, next)=> {
     const pdfBuffer = Buffer.from(pdf.split(',')[1], 'base64'); // Remove 'data:application/pdf;base64,' prefix if present
 
     // Create the media for WhatsApp
-    const media = new MessageMedia('application/pdf', pdfBuffer.toString('base64'), 'informe.pdf');
+    const media = new MessageMedia('application/pdf', pdfBuffer.toString('base64'), 'invoice.pdf');
 
     const response = await sendMessage({number: number, message: message, media: media});
     res.status(200).json({ message: response });

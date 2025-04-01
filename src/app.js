@@ -1,9 +1,9 @@
-import functions from 'firebase-functions';
 import express from 'express';
 import cors from "cors"
 
-import whatsappRoutes from './routes/whatsAppRoutes.js';
- 
+const serverless = requiere('serverless-http');
+
+import whatsappRoutes from './routes/whatsAppRoutes'; 
  
 const app = express()
 app.use(cors({
@@ -16,11 +16,17 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(express.static('tmp'))
 
-app.use('/api/whatsapp', whatsappRoutes); // Mount the WhatsApp routes
+app.use('/.netlify/functions/api/whatsapp', whatsappRoutes); // Mount the WhatsApp routes
+
+app.use('/.netlify/functions/api/', (req, res) => {
+  res.json({
+    'message': 'hello'
+  })
+})
 
 const PORT = 3030;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-exports.api = functions.https.onRequest(app)
+module.exports.handler = serverless(app);

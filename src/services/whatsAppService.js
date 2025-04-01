@@ -1,6 +1,5 @@
-import wpw from 'whatsapp-web.js';
-const { Client, LocalAuth } = wpw;
-import qrcode from 'qrcode';
+import { Client, LocalAuth, MessageMedia } from 'whatsapp-web.js';
+const qrcode = require('qrcode');
 
 
 const client = new Client({
