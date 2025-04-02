@@ -11,8 +11,7 @@
     "start": "node ./index.js",
     "dev": "nodemon ./index.js",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log",
-    "postinstall": "apt-get update && apt-get install -y chromium-browser libgconf-2-4 libnss3 libxss1 libasound2"
+    "logs": "firebase functions:log"
   },
   "main": "index.js",
   "dependencies": {
