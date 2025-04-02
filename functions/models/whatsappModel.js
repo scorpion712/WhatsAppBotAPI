@@ -12,9 +12,10 @@ const initializeClient = () => {
     client = new Client({
         authStrategy: new LocalAuth(),
         puppeteer: {
-            executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
+            executablePath:  '/usr/bin/chromium-browser',
             headless: true,
             args: [
+                '--no-sandbox', 
                 "--disable-setuid-sandbox",
                 "--unhandled-rejections=strict",
             ],
