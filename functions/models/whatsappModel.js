@@ -15,9 +15,15 @@ const initializeClient = () => {
             executablePath:  '/usr/bin/chromium-browser',
             headless: true,
             args: [
-                '--no-sandbox', 
-                "--disable-setuid-sandbox",
-                "--unhandled-rejections=strict",
+              '--no-sandbox',
+              '--disable-setuid-sandbox',
+              '--disable-dev-shm-usage',
+              '--disable-accelerated-2d-canvas',
+              '--no-first-run',
+              '--no-zygote',
+              '--single-process',
+              '--disable-gpu',
+              '--unhandled-rejections=strict'
             ],
         },
     });
