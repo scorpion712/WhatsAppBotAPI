@@ -10,7 +10,9 @@ let isReady = false;
 
 const initializeClient = () => { 
     client = new Client({
-        authStrategy: new LocalAuth(),
+        authStrategy: new LocalAuth({
+            dataPath: '/app/.wwebjs_auth'
+        }),
         puppeteer: {
             executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
             headless: true,
